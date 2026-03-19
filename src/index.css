@@ -66,6 +66,12 @@
 @layer base {
   * {
     @apply border-border;
+    /* Prevent layout shifts on transitions */
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -73,11 +79,24 @@
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Promote body to its own GPU layer */
+    transform: translateZ(0);
+    -webkit-overflow-scrolling: touch;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
+  }
+
+  /* Respect user preference — disable heavy animations */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
   }
 }
 
@@ -87,6 +106,17 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid rgba(255,255,255,0.5);
+    /* Promote navbar to GPU composite layer */
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* GPU-promoted elements that animate */
+  .gpu-promote {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .card-shadow {

@@ -68,8 +68,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -5, transition: { duration: 0.25, ease: "easeOut" } }}
+      transition={{ duration: 0.5, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* Image */}
       <div className="pc-img-wrap">
@@ -230,7 +229,11 @@ export default function ProductsSection() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.65s ease;
+          /* Compositor-only transform—no layout recalculation */
+          transition: transform 0.5s ease;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
           display: block;
         }
 
@@ -262,11 +265,11 @@ export default function ProductsSection() {
           font-weight: 500;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          background: rgba(255,255,255,0.92);
-          color: rgba(26,23,20,0.6);
+          /* No backdrop-filter — too expensive on low-end devices */
+          background: rgba(255,255,255,0.9);
+          color: rgba(26,23,20,0.65);
           padding: 4px 10px;
           border-radius: 100px;
-          backdrop-filter: blur(4px);
         }
 
         /* ── Card body ── */

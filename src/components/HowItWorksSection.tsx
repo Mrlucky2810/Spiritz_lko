@@ -23,7 +23,7 @@ const steps = [
 ];
 
 // Stagger delay per step — sequential reveal
-const STEP_DELAY = 0.32;
+const STEP_DELAY = 0.22;
 
 export default function HowItWorksSection() {
   const ref = useRef(null);
@@ -165,7 +165,9 @@ export default function HowItWorksSection() {
           line-height: 1;
           margin-bottom: 22px;
           box-shadow: 0 2px 20px rgba(201, 168, 76, 0.1);
-          transition: border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+          /* Use compositor-friendly props only */
+          will-change: transform;
+          transition: border-color 0.28s, background 0.28s, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s;
         }
 
         .hiw-step:hover .hiw-emoji-ring {
@@ -370,11 +372,11 @@ export default function HowItWorksSection() {
               <motion.div
                 key={step.number}
                 className="hiw-step"
-                initial={{ opacity: 0, y: 36 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{
-                  duration: 0.7,
-                  delay: i * STEP_DELAY,          // 0s, 0.32s, 0.64s
+                  duration: 0.6,
+                  delay: i * STEP_DELAY,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >

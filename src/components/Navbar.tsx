@@ -48,6 +48,9 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 50;
+          /* Promote navbar to its own GPU compositing layer */
+          will-change: transform;
+          transform: translateZ(0);
         }
 
         .navbar-inner {
@@ -57,7 +60,8 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          transition: background 0.5s ease, border-color 0.5s ease, height 0.4s ease;
+          /* Animate only cheap props: background, border */
+          transition: background 0.4s ease, border-color 0.4s ease, height 0.35s ease;
           border-bottom: 1px solid transparent;
         }
 
@@ -182,7 +186,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
         className="navbar-root"
         initial={{ y: -72, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <nav className={`navbar-inner ${isOpaque ? "scrolled" : ""}`}>
 

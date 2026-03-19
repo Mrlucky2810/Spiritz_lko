@@ -72,6 +72,10 @@ export default function HeroSection() {
         .slide-bg {
           position: absolute;
           inset: 0;
+          /* GPU compositing layer */
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         .slide-bg img {
@@ -79,6 +83,10 @@ export default function HeroSection() {
           height: 100%;
           object-fit: cover;
           transform-origin: center center;
+          /* Promote to GPU layer for smooth Ken Burns */
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         .grain-overlay {
@@ -258,21 +266,22 @@ export default function HeroSection() {
           width: 44px;
           height: 44px;
           border: 1px solid rgba(245,240,232,0.15);
-          background: rgba(10,8,6,0.4);
-          backdrop-filter: blur(8px);
+          /* Solid bg is cheaper than backdrop-filter on mobile */
+          background: rgba(10,8,6,0.65);
           color: rgba(245,240,232,0.6);
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.3s;
+          /* Only animate compositor-friendly props */
+          transition: border-color 0.25s, color 0.25s, background 0.25s;
           font-size: 16px;
         }
 
         .nav-btn:hover {
           border-color: var(--accent);
           color: var(--accent);
-          background: rgba(10,8,6,0.7);
+          background: rgba(10,8,6,0.85);
         }
 
         /* Slide counter */
@@ -340,7 +349,7 @@ export default function HeroSection() {
               loading="eager"
               initial={{ scale: 1.06 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 8, ease: "easeOut" }}
+              transition={{ duration: 5, ease: "easeOut" }}
             />
           </motion.div>
         </AnimatePresence>

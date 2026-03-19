@@ -9,7 +9,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function CollectionsSection() {
@@ -78,12 +78,25 @@ export default function CollectionsSection() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.7s ease;
+          /* Compositor-safe scale — promotes to GPU layer */
+          transition: transform 0.55s ease;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
           display: block;
         }
 
         .cat-card:hover img {
           transform: scale(1.04);
+        }
+
+        /* CSS-driven lift — no JS runtime cost */
+        .cat-card {
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+        }
+        .cat-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 32px rgba(0,0,0,0.18);
         }
 
         .cat-card-overlay {
@@ -189,8 +202,6 @@ export default function CollectionsSection() {
               key={cat.id}
               className="cat-card"
               variants={cardVariants}
-              whileHover={{ y: -3 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
               onClick={() => scrollToProducts(cat.id)}
             >
               <img src={cat.image} alt={cat.name} loading="lazy" />
