@@ -7,7 +7,7 @@ function LegalPage({ title, subtitle, children }: { title: string; subtitle: str
   useSEO({ title: `${title} | Spiritz`, description: subtitle });
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-[#f5f3ef] pt-28 pb-20 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#faf9f7] pt-28 pb-20 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -16,15 +16,15 @@ function LegalPage({ title, subtitle, children }: { title: string; subtitle: str
         >
           <button
             onClick={() => navigate(-1)}
-            className="w-10 h-10 rounded-full border border-[#d4c9b8] bg-white flex items-center justify-center text-[#6b5f52] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all flex-shrink-0"
+            className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all flex-shrink-0"
           >
             <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
           </button>
           <div>
-            <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "#C9A84C", marginBottom: "4px" }}>
+            <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "4px" }}>
               Legal
             </p>
-            <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 400, color: "#1a1410", margin: 0, lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 400, color: "var(--foreground)", margin: 0, lineHeight: 1.1 }}>
               {title}
             </h1>
           </div>
@@ -34,7 +34,7 @@ function LegalPage({ title, subtitle, children }: { title: string; subtitle: str
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white border border-[#e0d8ce] rounded-2xl shadow-sm p-6 sm:p-8"
+          className="bg-white border border-border rounded-2xl shadow-sm p-6 sm:p-8"
         >
           <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "10.5px", color: "#9a8d7e", marginBottom: "28px", letterSpacing: "0.03em" }}>
             {subtitle} &middot; Last updated: {new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
@@ -48,7 +48,7 @@ function LegalPage({ title, subtitle, children }: { title: string; subtitle: str
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
-    <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.2rem", fontWeight: 500, color: "#1a1410", margin: "28px 0 8px" }}>
+    <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.2rem", fontWeight: 500, color: "var(--foreground)", margin: "28px 0 8px" }}>
       {children}
     </h2>
   );

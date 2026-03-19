@@ -21,7 +21,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-transparent overflow-x-hidden flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative overflow-x-hidden">
       <Navbar onCartOpen={() => navigate("/cart")} />
       <main className="flex-1">
         {children}

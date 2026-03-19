@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SITE_CONFIG, WHATSAPP_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -63,7 +64,7 @@ export default function Footer() {
           text-decoration: none;
         }
 
-        .footer-logo-dot { color: #C9A84C; }
+        .footer-logo-dot { color: var(--gold); }
 
         .footer-tagline {
           font-family: 'Montserrat', sans-serif;
@@ -89,7 +90,7 @@ export default function Footer() {
           font-weight: 600;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           margin-bottom: 20px;
           display: block;
         }
@@ -142,7 +143,7 @@ export default function Footer() {
           display: inline-block;
         }
 
-        .footer-link:hover { color: #C9A84C; }
+        .footer-link:hover { color: var(--gold); }
 
         .footer-wa-wrap {
           display: flex;
@@ -160,7 +161,7 @@ export default function Footer() {
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: #0a0806;
-          background: #C9A84C;
+          background: var(--gold);
           padding: 12px 22px;
           text-decoration: none;
           margin-top: 4px;
@@ -272,7 +273,7 @@ export default function Footer() {
             </defs>
 
             {/* ── Wine Bottle — far left ── */}
-            <g opacity="0.13" stroke="#C9A84C" strokeWidth="1.1" fill="none" mask="url(#maskLeft)" transform="translate(-10, 20)">
+            <g opacity="0.13" stroke="var(--gold)" strokeWidth="1.1" fill="none" mask="url(#maskLeft)" transform="translate(-10, 20)">
               {/* Bottle body */}
               <path d="M55 420 C35 420 28 390 28 350 L28 200 C20 185 18 165 22 145 L22 100 C22 92 26 86 32 84 L32 50 C32 44 36 40 42 40 L68 40 C74 40 78 44 78 50 L78 84 C84 86 88 92 88 100 L88 145 C92 165 90 185 82 200 L82 350 C82 390 75 420 55 420 Z" />
               {/* Neck detail */}
@@ -283,11 +284,11 @@ export default function Footer() {
               {/* Liquid level */}
               <line x1="29" y1="170" x2="81" y2="170" strokeDasharray="3 3" opacity="0.5" />
               {/* Cork */}
-              <rect x="38" y="30" width="34" height="14" rx="3" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" />
+              <rect x="38" y="30" width="34" height="14" rx="3" fill="color-mix(in srgb, var(--gold), transparent 85%)" stroke="var(--gold)" />
             </g>
 
             {/* ── Beer Mug — left area ── */}
-            <g opacity="0.10" stroke="#C9A84C" strokeWidth="1.1" fill="none" mask="url(#maskLeft)" transform="translate(130, 80)">
+            <g opacity="0.10" stroke="var(--gold)" strokeWidth="1.1" fill="none" mask="url(#maskLeft)" transform="translate(130, 80)">
               {/* Mug body */}
               <path d="M10 280 L10 30 Q10 20 20 20 L110 20 Q120 20 120 30 L120 280 Q120 290 110 290 L20 290 Q10 290 10 280 Z" />
               {/* Handle */}
@@ -301,7 +302,7 @@ export default function Footer() {
             </g>
 
             {/* ── Whisky/Wine Glass — right area ── */}
-            <g opacity="0.13" stroke="#C9A84C" strokeWidth="1.1" fill="none" mask="url(#maskRight)" transform="translate(960, 30)">
+            <g opacity="0.13" stroke="var(--gold)" strokeWidth="1.1" fill="none" mask="url(#maskRight)" transform="translate(960, 30)">
               {/* Bowl */}
               <path d="M20 10 C10 10 0 50 5 120 C8 160 25 190 55 200 C85 190 102 160 105 120 C110 50 100 10 90 10 Z" />
               {/* Stem */}
@@ -315,7 +316,7 @@ export default function Footer() {
             </g>
 
             {/* ── Tall Whisky Bottle — far right ── */}
-            <g opacity="0.12" stroke="#C9A84C" strokeWidth="1.1" fill="none" mask="url(#maskRight)" transform="translate(1090, 0)">
+            <g opacity="0.12" stroke="var(--gold)" strokeWidth="1.1" fill="none" mask="url(#maskRight)" transform="translate(1090, 0)">
               {/* Body */}
               <path d="M30 420 C15 420 10 395 10 360 L10 190 C4 175 2 158 6 140 L6 95 C6 88 10 83 16 82 L16 44 C16 38 20 34 26 34 L54 34 C60 34 64 38 64 44 L64 82 C70 83 74 88 74 95 L74 140 C78 158 76 175 70 190 L70 360 C70 395 65 420 50 420 Z" />
               {/* Shoulders */}
@@ -329,7 +330,7 @@ export default function Footer() {
             </g>
 
             {/* ── Champagne flute — centre-right ── */}
-            <g opacity="0.08" stroke="#C9A84C" strokeWidth="1" fill="none" transform="translate(700, 20)">
+            <g opacity="0.08" stroke="var(--gold)" strokeWidth="1" fill="none" transform="translate(700, 20)">
               {/* Flute bowl — narrow tall */}
               <path d="M28 10 C22 10 14 30 14 100 C14 155 22 185 40 195 C58 185 66 155 66 100 C66 30 58 10 52 10 Z" />
               {/* Stem */}
@@ -382,11 +383,11 @@ export default function Footer() {
                 </li>
                 <li className="footer-contact-item">
                   <Phone className="footer-contact-icon" />
-                  +91 73551 03401
+                  {SITE_CONFIG.phoneNumber || "+91 73551 03401"}
                 </li>
                 <li className="footer-contact-item">
                   <Mail className="footer-contact-icon" />
-                  hello@lucknowspirits.com
+                  {SITE_CONFIG.email}
                 </li>
               </ul>
             </motion.div>
@@ -420,7 +421,7 @@ export default function Footer() {
                 Ready to order? Tap below to connect directly on WhatsApp.
               </p>
               <a
-                href="https://wa.me/917355103401?text=Hi%2C%20I%20want%20to%20order%20liquor%20in%20Lucknow"
+                href={WHATSAPP_CONFIG.getWhatsAppUrl(WHATSAPP_CONFIG.defaultMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-wa-btn"

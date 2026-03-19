@@ -67,7 +67,7 @@ export default function HowItWorksSection() {
           font-weight: 600;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           display: block;
           margin-bottom: 14px;
         }
@@ -121,7 +121,7 @@ export default function HowItWorksSection() {
           width: 3px;
           height: 3px;
           border-radius: 50%;
-          background: #C9A84C;
+          background: var(--gold);
           opacity: 0.5;
         }
 
@@ -184,7 +184,7 @@ export default function HowItWorksSection() {
           font-weight: 600;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           margin-bottom: 10px;
           display: block;
         }
@@ -225,7 +225,7 @@ export default function HowItWorksSection() {
           letter-spacing: 0.22em;
           text-transform: uppercase;
           color: #0a0806;
-          background: #C9A84C;
+          background: var(--gold);
           padding: 15px 36px;
           border: none;
           cursor: pointer;
@@ -284,20 +284,20 @@ export default function HowItWorksSection() {
             preserveAspectRatio="xMidYMid slice"
           >
             {/* Large wine glass outline — left */}
-            <g opacity="0.04" stroke="#C9A84C" strokeWidth="1.2">
+            <g opacity="0.04" stroke="var(--gold)" strokeWidth="1.2">
               <path d="M80 60 C60 120 60 200 90 240 L90 320 L50 320 M50 320 L130 320 M90 320 L90 240 C120 200 120 120 100 60 Z" />
               <ellipse cx="90" cy="62" rx="22" ry="6" />
             </g>
 
             {/* Bottle outline — far left */}
-            <g opacity="0.035" stroke="#C9A84C" strokeWidth="1.2">
+            <g opacity="0.035" stroke="var(--gold)" strokeWidth="1.2">
               <path d="M30 380 C20 360 20 300 30 280 L30 260 C30 255 34 250 40 250 L50 250 C56 250 60 255 60 260 L60 280 C70 300 70 360 60 380 C60 390 58 400 40 400 C22 400 20 390 30 380 Z" />
               <line x1="30" y1="290" x2="60" y2="290" />
               <line x1="33" y1="310" x2="57" y2="310" />
             </g>
 
             {/* Large whisky glass — right side */}
-            <g opacity="0.04" stroke="#C9A84C" strokeWidth="1.2">
+            <g opacity="0.04" stroke="var(--gold)" strokeWidth="1.2">
               <path d="M1080 380 L1060 280 L1120 280 Z" />
               <rect x="1060" y="275" width="60" height="6" rx="2" />
               <line x1="1065" y1="310" x2="1115" y2="318" />
@@ -305,7 +305,7 @@ export default function HowItWorksSection() {
             </g>
 
             {/* Wine bottle — right */}
-            <g opacity="0.035" stroke="#C9A84C" strokeWidth="1.2">
+            <g opacity="0.035" stroke="var(--gold)" strokeWidth="1.2">
               <path d="M1150 80 C1140 60 1140 40 1145 30 L1145 20 C1145 16 1148 14 1152 14 L1158 14 C1162 14 1165 16 1165 20 L1165 30 C1170 40 1170 60 1160 80 C1155 120 1155 200 1165 240 C1170 260 1168 300 1155 310 C1142 300 1140 260 1145 240 C1155 200 1155 120 1150 80 Z" />
               <line x1="1143" y1="160" x2="1167" y2="160" />
             </g>
@@ -327,7 +327,7 @@ export default function HowItWorksSection() {
                 cx={cx}
                 cy={cy}
                 r={r}
-                fill="#C9A84C"
+                fill="var(--gold)"
                 opacity="0.18"
               />
             ))}
@@ -335,14 +335,14 @@ export default function HowItWorksSection() {
             {/* Thin arcing line across top */}
             <path
               d="M0 80 Q300 20 600 60 Q900 100 1200 40"
-              stroke="#C9A84C"
+              stroke="var(--gold)"
               strokeWidth="0.6"
               opacity="0.07"
             />
             {/* Thin arcing line across bottom */}
             <path
               d="M0 430 Q400 480 700 450 Q900 430 1200 460"
-              stroke="#C9A84C"
+              stroke="var(--gold)"
               strokeWidth="0.6"
               opacity="0.07"
             />

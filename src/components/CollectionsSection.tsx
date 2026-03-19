@@ -41,7 +41,7 @@ export default function CollectionsSection() {
           font-weight: 600;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           margin-bottom: 14px;
           display: block;
         }
@@ -147,7 +147,7 @@ export default function CollectionsSection() {
         }
 
         .cat-card:hover .cat-explore {
-          color: #C9A84C;
+          color: var(--gold);
           gap: 8px;
         }
 

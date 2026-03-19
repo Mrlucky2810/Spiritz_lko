@@ -18,8 +18,8 @@ function CartButton({ product }: { product: Product }) {
           key="add"
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.18 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           onClick={() => addItem(product)}
           className="pc-add-btn"
         >
@@ -134,7 +134,7 @@ export default function ProductsSection() {
           font-weight: 600;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           display: block;
           margin-bottom: 12px;
         }
@@ -220,7 +220,7 @@ export default function ProductsSection() {
 
         .pc-img-wrap {
           position: relative;
-          aspect-ratio: 4 / 3;
+          aspect-ratio: 1 / 1;
           overflow: hidden;
           background: #f0ede8;
         }
@@ -304,7 +304,7 @@ export default function ProductsSection() {
           font-family: 'Montserrat', sans-serif;
           font-size: 1.1rem;
           font-weight: 600;
-          color: #C9A84C;
+          color: var(--gold);
           letter-spacing: -0.01em;
         }
 
@@ -361,7 +361,7 @@ export default function ProductsSection() {
           background: transparent;
           border: none;
           cursor: pointer;
-          color: #C9A84C;
+          color: var(--gold);
           transition: background 0.2s;
         }
 
@@ -399,7 +399,7 @@ export default function ProductsSection() {
           .pc-name { font-size: 1rem; }
           .pc-price { font-size: 0.95rem; }
           .pc-add-btn { padding: 10px; font-size: 9px; }
-          .ps-subtitle { display: none; }
+          .ps-subtitle { font-size: 10px; margin-top: 4px; opacity: 0.6; display: block; }
         }
 
         @media (max-width: 340px) {

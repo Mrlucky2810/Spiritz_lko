@@ -47,7 +47,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
         .navbar-root {
           position: fixed;
           top: 0; left: 0; right: 0;
-          z-index: 50;
+          z-index: 100;
           /* Promote navbar to its own GPU compositing layer */
           will-change: transform;
           transform: translateZ(0);
@@ -86,7 +86,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
         }
 
         .nav-logo .dot {
-          color: #C9A84C;
+          color: var(--gold);
         }
 
         .nav-logo:hover { color: #fff; }
@@ -164,7 +164,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
           right: -10px;
           width: 16px;
           height: 16px;
-          background: #C9A84C;
+          background: var(--gold);
           border-radius: 50%;
           display: flex;
           align-items: center;

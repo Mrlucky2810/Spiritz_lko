@@ -12,7 +12,7 @@ const Index = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="w-full">
       <HeroSection />
       <CollectionsSection />
       <ProductsSection />

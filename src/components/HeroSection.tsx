@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { WHATSAPP_CONFIG } from "@/lib/constants";
 
 const slides = [
   {
@@ -8,7 +9,7 @@ const slides = [
     headline: "Premium\nSpirits",
     sub: "Order from Nearby Licensed Stores in Lucknow",
     tag: "Fast WhatsApp Confirmation",
-    accent: "#C9A84C",
+    accent: "var(--gold)",
   },
   {
     id: 2,
@@ -407,7 +408,7 @@ export default function HeroSection() {
                   Browse Collection
                 </button>
                 <a
-                  href="https://wa.me/917355103401?text=Hi%2C%20I%20want%20to%20order%20liquor%20in%20Lucknow"
+                  href={WHATSAPP_CONFIG.getWhatsAppUrl(WHATSAPP_CONFIG.defaultMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"

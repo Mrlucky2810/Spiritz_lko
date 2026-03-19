@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
+import { useLocation } from "react-router-dom";
 
 interface MobileStickyCartProps {
   onCartOpen: () => void;
@@ -7,16 +8,19 @@ interface MobileStickyCartProps {
 
 export default function MobileStickyCart({ onCartOpen }: MobileStickyCartProps) {
   const { totalItems, totalPrice } = useCart();
+  const location = useLocation();
+
+  const isCartPage = location.pathname === "/cart";
 
   return (
     <AnimatePresence>
-      {totalItems > 0 && (
+      {totalItems > 0 && !isCartPage && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 28 }}
-          className="fixed bottom-0 left-0 right-0 z-40 sm:hidden px-4 pt-2"
+          className="fixed bottom-0 left-0 right-0 z-[90] sm:hidden px-4 pt-2"
           style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom, 16px))" }}
         >
           <button

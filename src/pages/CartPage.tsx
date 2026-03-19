@@ -4,6 +4,7 @@ import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
+import { SITE_CONFIG, WHATSAPP_CONFIG } from "@/lib/constants";
 
 export default function CartPage() {
   useSEO({ title: "Your Cart | Spiritz", description: "Review your selected premium spirits and proceed to WhatsApp checkout." });
@@ -22,7 +23,7 @@ export default function CartPage() {
       `*Total: ₹${totalPrice.toLocaleString()}*\n\n` +
       `📍 *Location:* Lucknow\n🏠 *Address:* ${address || "Not provided"}\n` +
       `👤 *Name:* ${name || "Not provided"}\n📱 *Phone:* ${phone || "Not provided"}`;
-    window.open(`https://wa.me/917355103401?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(WHATSAPP_CONFIG.getWhatsAppUrl(message), "_blank");
   };
 
   return (
@@ -58,12 +59,12 @@ export default function CartPage() {
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: #6b5f52;
+          color: var(--muted-foreground);
           transition: all 0.25s;
           flex-shrink: 0;
           box-shadow: 0 1px 4px rgba(0,0,0,0.07);
         }
-        .cp-back:hover { border-color: #C9A84C; color: #C9A84C; }
+        .cp-back:hover { border-color: var(--gold); color: var(--gold); }
 
         .cp-label {
           font-family: 'Montserrat', sans-serif;
@@ -71,7 +72,7 @@ export default function CartPage() {
           font-weight: 600;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: #C9A84C;
+          color: var(--gold);
           display: block;
           margin-bottom: 5px;
         }
@@ -124,7 +125,7 @@ export default function CartPage() {
           margin-top: 8px;
           transition: background 0.25s, transform 0.15s;
         }
-        .cp-empty-cta:hover { background: #C9A84C; color: #0a0806; transform: translateY(-1px); }
+        .cp-empty-cta:hover { background: var(--gold); color: #0a0806; transform: translateY(-1px); }
 
         /* ── Layout ── */
         .cp-layout {
@@ -170,7 +171,7 @@ export default function CartPage() {
           font-family: 'Montserrat', sans-serif;
           font-size: 10px;
           font-weight: 500;
-          color: #C9A84C;
+          color: var(--gold);
           letter-spacing: 0.05em;
         }
 
@@ -247,7 +248,7 @@ export default function CartPage() {
           color: #8a7d6e;
           transition: background 0.18s, color 0.18s;
         }
-        .cp-step-btn:hover { background: #ede8e0; color: #C9A84C; }
+        .cp-step-btn:hover { background: #ede8e0; color: var(--gold); }
 
         .cp-step-n {
           font-family: 'Montserrat', sans-serif;
@@ -299,7 +300,7 @@ export default function CartPage() {
         /* Gold top bar */
         .cp-summary-bar {
           height: 4px;
-          background: linear-gradient(to right, #C9A84C, #e8c96a, #C9A84C);
+          background: linear-gradient(to right, var(--gold), #f2da91, var(--gold));
         }
 
         .cp-summary-body { padding: 22px 22px 24px; }
@@ -364,7 +365,7 @@ export default function CartPage() {
           font-weight: 600;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #6b5f52;
+          color: var(--muted-foreground);
         }
 
         .cp-total-val {
@@ -411,9 +412,9 @@ export default function CartPage() {
         }
         .cp-input::placeholder { color: #a89b8c; }
         .cp-input:focus {
-          border-color: #C9A84C;
+          border-color: var(--gold);
           background: #fff;
-          box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+          box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold), transparent 88%);
         }
 
         /* CTA */
@@ -438,7 +439,7 @@ export default function CartPage() {
           transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
         }
         .cp-cta:hover {
-          background: #C9A84C;
+          background: var(--gold);
           color: #0a0806;
           transform: translateY(-1px);
           box-shadow: 0 8px 28px rgba(201,168,76,0.3);
@@ -515,12 +516,22 @@ export default function CartPage() {
           {items.length === 0 ? (
             <motion.div className="cp-empty"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="cp-empty-icon">🛒</span>
-              <h2 className="cp-empty-h">Nothing here yet</h2>
-              <p className="cp-empty-p">Browse the collection and add your favourite spirits</p>
-              <button className="cp-empty-cta" onClick={() => navigate("/")}>Browse Collection</button>
+              <div className="relative mb-6">
+                <div className="w-24 h-24 rounded-full bg-[#fdfaf5] border border-[#f0ede8] flex items-center justify-center">
+                  <span className="text-4xl grayscale opacity-40">🛒</span>
+                </div>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.3, type: "spring" }}
+                  className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary border-2 border-white"
+                />
+              </div>
+              <h2 className="cp-empty-h">Your collection is empty</h2>
+              <p className="cp-empty-p" style={{ maxWidth: "260px" }}>Discover our curated selection of fine spirits and perfumes for immediate delivery in {SITE_CONFIG.location}.</p>
+              <button className="cp-empty-cta" onClick={() => navigate("/")}>Explore Collection</button>
             </motion.div>
           ) : (
             <div className="cp-layout">
@@ -634,7 +645,7 @@ export default function CartPage() {
                     Confirm on WhatsApp
                   </button>
 
-                  <p className="cp-note">Orders fulfilled by licensed stores only · 21+ only</p>
+                  <p className="cp-note">Orders fulfilled by licensed stores only · 21+ only · Support: {SITE_CONFIG.supportHours}</p>
                 </div>
               </motion.div>
 

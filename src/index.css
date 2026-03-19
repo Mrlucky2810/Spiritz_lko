@@ -72,6 +72,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* Account for sticky navbar height (height=72px) */
+    scroll-padding-top: 88px;
   }
 
   body {
@@ -79,8 +81,7 @@
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Promote body to its own GPU layer */
-    transform: translateZ(0);
+    /* Removed translateZ(0) to fix position: fixed issues on mobile */
     -webkit-overflow-scrolling: touch;
   }
 
