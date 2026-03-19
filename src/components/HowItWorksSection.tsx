@@ -38,8 +38,8 @@ export default function HowItWorksSection() {
       <style>{`
         .hiw-section {
           padding: 100px 6vw;
-          background: #0a0806;
-          color: #f5f0e8;
+          background: #faf9f7;
+          color: #1a1410;
           position: relative;
           overflow: hidden;
         }
@@ -108,7 +108,7 @@ export default function HowItWorksSection() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 30px;
+          padding-top: 52px;
         }
 
         .hiw-connector-inner {
